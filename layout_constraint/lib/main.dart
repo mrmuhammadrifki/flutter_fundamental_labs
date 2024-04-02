@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:layout_constraint/layout_constraints.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,6 +9,18 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const LayoutConstraints();
+    return Center(
+      child: Container(
+        color: Colors.red,
+        child: Padding(
+          padding: const EdgeInsets.all(10),
+          child: Container(
+            width: 100,
+            height: 100,
+            color: Colors.green,
+          ),
+        ),
+      ),
+    );
   }
 }
