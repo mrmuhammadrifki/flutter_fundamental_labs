@@ -1,15 +1,10 @@
+import 'package:dicoding_academy_setstate/provider/done_module_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-class ModuleList extends StatefulWidget {
-  final List<String> doneModuleList;
+class ModuleList extends StatelessWidget {
+  const ModuleList({super.key});
 
-  const ModuleList({super.key, required this.doneModuleList});
-
-  @override
-  State<ModuleList> createState() => _ModuleListState();
-}
-
-class _ModuleListState extends State<ModuleList> {
   final List<String> _moduleList = const [
     'Modul 1 - Pengenalan Dart',
     'Modul 2 - Program Dart Pertamamu',
@@ -28,13 +23,15 @@ class _ModuleListState extends State<ModuleList> {
     return ListView.builder(
       itemCount: _moduleList.length,
       itemBuilder: (context, index) {
-        return ModuleTile(
-          moduleName: widget.doneModuleList[index],
-          isDone: widget.doneModuleList.contains(_moduleList[index]),
-          onClick: () {
-            setState(() {
-              widget.doneModuleList.add(_moduleList[index]);
-            });
+        return Consumer<DoneModuleProvider>(
+          builder: (context, DoneModuleProvider data, widget) {
+            return ModuleTile(
+              moduleName: _moduleList[index],
+              isDone: data.doneModuleList.contains(_moduleList[index]),
+              onClick: () {
+                data.complete(_moduleList[index]);
+              },
+            );
           },
         );
       },

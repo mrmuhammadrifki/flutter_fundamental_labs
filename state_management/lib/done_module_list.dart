@@ -1,12 +1,13 @@
+import 'package:dicoding_academy_setstate/provider/done_module_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class DoneModuleList extends StatelessWidget {
-  final List<String> doneModuleList;
-
-  const DoneModuleList({super.key, required this.doneModuleList});
+  const DoneModuleList({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final doneModuleList = Provider.of<DoneModuleProvider>(context, listen: false).doneModuleList;
     return Scaffold(
       appBar: AppBar(
         title: const Text('Done Module List'),

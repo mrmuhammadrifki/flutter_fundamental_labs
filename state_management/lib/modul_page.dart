@@ -10,30 +10,26 @@ class ModulPage extends StatefulWidget {
 }
 
 class _ModulPageState extends State<ModulPage> {
-   final List<String> doneModuleList = [];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Memulai Pemprograman dengan Dart'),
         actions: [
-           IconButton(
+          IconButton(
             icon: const Icon(Icons.done),
             onPressed: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => DoneModuleList(
-                    doneModuleList: doneModuleList,
-                  ),
+                  builder: (context) => const DoneModuleList(),
                 ),
               );
             },
           )
         ],
       ),
-      body: ModuleList(doneModuleList: doneModuleList),
+      body: const ModuleList(),
     );
   }
 }
